@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="800" height="400" style="border:1px solid  ;"></canvas>
+
+
+
+    <script>
+        let mycanvas = document.getElementById('mycanvas');
+        let ctx = mycanvas.getContext('2d');
+        let Rectangle = function (length, widh) {
+            this.length = length;
+            this.widh = widh;
+
+            this.area = function () {
+
+                return this.length * this.widh;
+            }
+            this.perimeter = function () {
+                return (this.length + this.widh) * 2;
+            }
+        }
+
+        function declare() {
+            let rectangle = new Rectangle(150, 100);
+            let area = rectangle.area();
+            let perimeter = rectangle.perimeter();
+            ctx.fillStyle ='purple'
+            ctx.fillRect(100, 100, 150, 100);
+            ctx.font='20px Verdana';
+            ctx.fillStyle ='black'
+            ctx.fillText('diện tích :' + area ,10,90 );
+            // 
+            ctx.fillText('chu vi :' +perimeter,200,90);
+
+            
+
+            
+
+        }
+        declare();
+        // document.write(declare.area);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

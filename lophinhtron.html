@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        let circle = function (radius, color) {
+            this.radius = radius;
+            this.color = color;
+
+            this.Cricle = function (radius, color) {
+                return (this.radius + ',' + this.color);
+
+
+            }
+            this.getRadius = function () {
+                return this.radius;
+            }
+            this.getArea = function () {
+                return (Math.PI * radius * radius);
+            }
+        }
+        let circle1 = new circle(2, 'blue');
+        let radius = circle1.radius
+        let Radius = circle1.getRadius();
+        let Area = circle1.getArea();
+        alert(radius + 'bán kính' + ';' + Area + 'diện tích');
+        let color = circle1.color;
+        console.log(circle1);
+
+
+
+    </script>
+</body>
+
+</html>

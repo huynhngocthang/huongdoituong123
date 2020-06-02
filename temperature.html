@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="200" style="border: 1px solid ;"></canvas>
+
+
+    <script>
+        let mycanvas=document.getElementById('mycanvas');
+        let ctx=mycanvas.getContext('2d');
+        let temperature= function(doC,status) {
+            this.doC= doC;
+            this.status= status;
+
+
+            this.Fahrenheit= function () {
+                
+                return (this.doC*1.8000) +32;
+            }
+            this.Kenvin= function() {
+
+                return this.doC+273.15;
+            }
+        }
+        function working() {
+            let Temperature= new temperature(25,'giông bão');
+            let fahrenheit=Temperature.Fahrenheit();
+            let Kenvin=Temperature.Kenvin();
+            let status=Temperature.status;
+            ctx.fillStyle='blue';
+            ctx.font =('20px Verdana');
+            ctx.fillText('độ f :'+fahrenheit ,20,50 );
+            ctx.fillText('độ K :'+Kenvin,20,80 );
+            ctx.fillStyle='brown'
+            ctx.fillText('trạng thái:'+status,20,110);
+            
+            
+        }
+        working();
+
+
+
+    </script>
+</body>
+</html>

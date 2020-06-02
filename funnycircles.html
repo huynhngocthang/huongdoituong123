@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="2000px" height="500px" style="border: 1px solid #d3d3d3 "></canvas>
+
+
+    <script>
+        let canvas = document.getElementById('mycanvas')
+        let ctx = canvas.getContext("2d");
+        let arrayCricle = [];
+        const amountCricle = 100;
+
+        function Cricle(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+
+            this.speed = 2;
+            this.left = -2;
+            this.right = 2;
+        }
+
+
+
+        function doimau() {
+
+            return Math.floor(Math.random() * 255);
+        }
+
+
+        function getcolorful() {
+            let yellowgreen = doimau();
+            let purple = doimau();
+            let red = doimau();
+
+            return "rgb(" + yellowgreen + "," + purple + "," + red + ")";
+        }
+
+        function createcirle() {
+
+            let radius = Math.round(Math.random() * 50);
+            let color = getcolorful();
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            let cricle = new Cricle(x, y, radius, color);
+            
+
+            arrayCricle.push(cricle);
+        }
+
+
+        function createMultipleCircle() {
+            for (var i = 0; i < amountCricle; i++) {
+                createcirle();
+            }
+        }
+
+        createMultipleCircle();
+
+        function drawCricle() {
+            console.log(arrayCricle);
+            console.log(arrayCricle[1].color);
+            for (let i = 0; i < arrayCricle.length; i++) {
+                ctx.beginPath();
+                ctx.arc(arrayCricle[i].x, arrayCricle[i].y, arrayCricle[i].radius, 0, 2 * Math.PI);
+                ctx.fillStyle = arrayCricle[i].color;
+                ctx.fill();
+            }
+
+        }
+
+        function updatePostion() {
+            for (let i = 0; i < arrayCricle.length; i++) {
+                arrayCricle[i].x += arrayCricle[i].speed;
+             if(arrayCricle[i].x > 2000) arrayCricle[i].x = 0; 
+             console.log(arrayCricle[i].x);  
+                }
+        }
+        
+
+        function main() {
+            ctx.clearRect(0, 0, 2000, 500);
+            // createcirle();
+            drawCricle();
+            // if(arrayCricle.length < 30)
+            // {arrayCricle.splice(0,1);}
+            updatePostion();
+
+            requestAnimationFrame(main)
+        }
+
+        main();
+        // console.log(arrayCricle)
+
+
+
+    </script>
+</body>
+
+</html>
